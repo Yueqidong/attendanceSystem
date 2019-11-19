@@ -1,0 +1,54 @@
+<template name="content">
+<form role="form">
+<div class="form-group">
+  <label for="name">Select a subject:</label>
+  <select class="form-control">
+    <option>BIT101</option>
+    <option>BIT201</option>
+    <option>BIS201</option>
+    <option>BIS205</option>
+    <option>BIT301</option>
+  </select>
+  <label for="name">Select a Week:</label>
+  <select class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+  </select>
+</div>
+<label for="name">Students List:</label>
+<br>
+
+{{> studentlist}}
+
+{{> example}}
+</form>
+</template>
+
+<template name="studentlist">
+  <div class="posts">
+    <ul class="list-group">
+      <li class="list-group-item">Student1</li>
+      <li class="list-group-item">Student2</li>
+      <li class="list-group-item">Student3</li>
+      <li class="list-group-item">Student4</li>
+      <li class="list-group-item">Student5</li>
+    </ul>
+  </div>
+</template>
+
+<template name="example">
+    <button type="button" class="takePhoto">Capture image</button>
+    <img class="photo">
+</template>
