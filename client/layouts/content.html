@@ -27,28 +27,64 @@
     <option>14</option>
   </select>
 </div>
-<label for="name">Students List:</label>
 <br>
 
+  <br>
+  <div class="row">
+        <div class="col-md-4"><label for="name">Student List:</label></div>
+        <div class="col-md-4">
+              <label><input type="file" id="inputfile"></label>
+        </div>
+
+
+     </div>
 {{> studentlist}}
 
 {{> example}}
+<button type="button">Save</button>
+<div id="render-target"></div>
 </form>
 </template>
 
 <template name="studentlist">
   <div class="posts">
-    <ul class="list-group">
-      <li class="list-group-item">Student1</li>
-      <li class="list-group-item">Student2</li>
-      <li class="list-group-item">Student3</li>
-      <li class="list-group-item">Student4</li>
-      <li class="list-group-item">Student5</li>
-    </ul>
+    <table class="table table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Attendance</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ali Metcalfe</td>
+      <td><input type="checkbox" value=""></td>
+      <td><textarea rows="1"></textarea></td>
+    </tr>
+    <tr>
+      <td>Bernard Hendricks</td>
+      <td><input type="checkbox" value=""></td>
+      <td><textarea rows="1"></textarea></td>
+    </tr>
+    <tr>
+      <td>Kelsey Mccray</td>
+      <td><input type="checkbox" value=""></td>
+      <td><textarea rows="1"></textarea></td>
+    </tr>
+    <tr>
+      <td>Findlay Barry</td>
+      <td><input type="checkbox" value=""></td>
+      <td><textarea rows="1"></textarea></td>
+    </tr>
+  </tbody>
+</table>
+
   </div>
 </template>
 
 <template name="example">
-    <button type="button" class="takePhoto">Capture image</button>
+    <button type="button" class="takePhoto">Capture Image</button>
     <img class="photo">
 </template>

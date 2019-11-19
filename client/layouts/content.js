@@ -1,3 +1,4 @@
+
 import './content.html';
 
 
@@ -9,10 +10,14 @@ Template.example.events({
             width: 800,
             height: 600
         };
-        
+        MeteorCamera.locale.takePhoto = "Capture Image";
+
         MeteorCamera.getPicture(cameraOptions, function (error, data) {
+
+
            if (!error) {
                instance.$('.photo').attr('src', data);
+
            }
         });
     }
