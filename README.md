@@ -1,1 +1,1 @@
-# Attendance System Using Fcial Recogition for FYP1
+# Attendance System Using Facial Recogition for FYP1
