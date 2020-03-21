@@ -1,0 +1,52 @@
+<template name="addStudent">
+  {{#if currentUser}}
+  <div style="text-align:center;">
+    <h2>Create a student profile</h2>
+  </div>
+  <br>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+
+      <label for="studentName" class="col-lg-2 control-label">Student Name:</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" id="studentName" name="studentName" required>
+      </div>
+
+      <label for="studentID" class="col-lg-2 control-label">Student ID:</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" id="studentID" name="studentID" required>
+      </div>
+
+    </div>
+    <br>
+    <div class="form-group">
+
+      <label class="col-lg-2 control-label">Gender:</label>
+      <div class="col-lg-4">
+      <select class="form-control" name="gender" id="gender">
+      <option>Male</option>
+      <option>Female</option>
+      </select>
+      </div>
+
+      <label class="col-lg-2 control-label">Nationality:</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" id="Nationality" name="Nationality" required>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+
+      <label class="col-lg-2 control-label">Programme:</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" id="programme" name="programme" required>
+      </div>
+
+
+    </div>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
+  </form>
+  {{/if}}
+</template>

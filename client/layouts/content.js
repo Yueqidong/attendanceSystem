@@ -1,6 +1,12 @@
-
 import './content.html';
+import { student } from '../../lib/collections/collection.js';
+import { Template } from 'meteor/templating';
 
+Template.student.helpers({
+  student: function() {
+    return student.find();
+  }
+});
 
 Template.example.events({
     'click .takePhoto': function(e, instance) {

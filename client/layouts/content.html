@@ -1,4 +1,5 @@
 <template name="content">
+  {{#if currentUser}}
 <form role="form">
 <div class="form-group">
   <label for="name">Select a subject:</label>
@@ -9,6 +10,7 @@
     <option>BIS205</option>
     <option>BIT301</option>
   </select>
+  <br>
   <label for="name">Select a Week:</label>
   <select class="form-control">
     <option>1</option>
@@ -26,24 +28,14 @@
     <option>13</option>
     <option>14</option>
   </select>
-</div>
-<br>
-
   <br>
-  <div class="row">
-        <div class="col-md-4"><label for="name">Student List:</label></div>
-        <div class="col-md-4">
-              <label><input type="file" id="inputfile"></label>
-        </div>
-
-
-     </div>
+</div>
 {{> studentlist}}
-
 {{> example}}
 <button type="button">Save</button>
 <div id="render-target"></div>
 </form>
+{{/if}}
 </template>
 
 <template name="studentlist">
@@ -58,26 +50,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Ali Metcalfe</td>
-      <td><input type="checkbox" value=""></td>
-      <td><textarea rows="1"></textarea></td>
-    </tr>
-    <tr>
-      <td>Bernard Hendricks</td>
-      <td><input type="checkbox" value=""></td>
-      <td><textarea rows="1"></textarea></td>
-    </tr>
-    <tr>
-      <td>Kelsey Mccray</td>
-      <td><input type="checkbox" value=""></td>
-      <td><textarea rows="1"></textarea></td>
-    </tr>
-    <tr>
-      <td>Findlay Barry</td>
-      <td><input type="checkbox" value=""></td>
-      <td><textarea rows="1"></textarea></td>
-    </tr>
+    {{> student}}
+
   </tbody>
 </table>
 
@@ -87,4 +61,14 @@
 <template name="example">
     <button type="button" class="takePhoto">Capture Image</button>
     <img class="photo">
+</template>
+
+<template name="student">
+    {{#each student}}
+    <tr>
+      <td>{{name}}</td>
+      <td><input type="checkbox" value=""></td>
+      <td><textarea rows="1"></textarea></td>
+    </tr>
+    {{/each}}
 </template>

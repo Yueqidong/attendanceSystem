@@ -1,7 +1,10 @@
+import { student } from '../lib/collections/collection.js';
+import '../lib/routes/routes.js';
 import { Accounts } from 'meteor/accounts-base';
-import '/lib/router.js'
-
+import { Template } from 'meteor/templating';
 
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_ONLY'
 });
+
+Meteor.subscribe("student");
