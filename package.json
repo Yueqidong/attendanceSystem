@@ -11,8 +11,10 @@
     "@babel/runtime": "^7.8.3",
     "bcrypt": "^3.0.8",
     "meteor-node-stubs": "^0.4.1",
+    "papaparse": "^5.1.1",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "simpl-schema": "^1.5.7"
   },
   "meteor": {
     "mainModule": {

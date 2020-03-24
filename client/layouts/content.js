@@ -1,10 +1,18 @@
 import './content.html';
 import { student } from '../../lib/collections/collection.js';
+import { subject } from '../../lib/collections/collection.js';
 import { Template } from 'meteor/templating';
 
 Template.student.helpers({
   student: function() {
     return student.find();
+  }
+});
+
+
+Template.subject.helpers({
+  subject: function() {
+    return subject.find();
   }
 });
 

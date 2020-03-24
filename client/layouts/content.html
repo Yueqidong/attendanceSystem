@@ -4,11 +4,7 @@
 <div class="form-group">
   <label for="name">Select a subject:</label>
   <select class="form-control">
-    <option>BIT101</option>
-    <option>BIT201</option>
-    <option>BIS201</option>
-    <option>BIS205</option>
-    <option>BIT301</option>
+    {{> subject}}
   </select>
   <br>
   <label for="name">Select a Week:</label>
@@ -70,5 +66,11 @@
       <td><input type="checkbox" value=""></td>
       <td><textarea rows="1"></textarea></td>
     </tr>
+    {{/each}}
+</template>
+
+<template name="subject">
+    {{#each subject}}
+    <option>{{subjectCode}}</option>
     {{/each}}
 </template>

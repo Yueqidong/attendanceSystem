@@ -27,3 +27,7 @@ less
 anychart:anychart
 mdg:camera
 jquery
+aldeed:collection2@3.0.0
+aldeed:autoform
+aldeed:schema-index
+underscore

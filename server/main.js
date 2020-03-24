@@ -1,34 +1,32 @@
 import { student } from '../lib/collections/collection.js';
+import { subject } from '../lib/collections/collection.js';
 import { Meteor } from 'meteor/meteor';
+import SimpleSchema from 'simpl-schema';
 
 
-  // code to run on server at startup
-  if (student.find().count() === 0) {
-  student.insert({
-    name: 'Introducing Telescope',
-    studentID: 'B1560124',
-    gender:'male',
-    nationality:'American',
-    programme:'IT'
-  });
+Meteor.methods({
+  parseUpload( data ) {
+    for ( let i = 0; i < data.length; i++ ) {
+      let item   = data[ i ],
+          exists = student.findOne( { studentID: item.studentID } );
 
-  student.insert({
-    name: "Joanne Amberg",
-    studentID:"B1600212",
-    gender: "female",
-    nationality:"American",
-    programme:"Business"
-  });
+      if ( !exists ) {
+        student.insert( item );
+      } else {
+        console.warn( 'Rejected. This item already exists.' );
+      }
+    }
+  }
+});
 
-  student.insert({
-    name: "Jenna Corin",
-    studentID: "B1700123",
-    gender: "female",
-    nationality:'Malaysian',
-    programme:"IT"
-  });
-}
+
 student.allow({
+  insert: function (userId, doc) {
+  return !! userId;
+}
+});
+
+subject.allow({
   insert: function (userId, doc) {
   return !! userId;
 }
@@ -36,4 +34,8 @@ student.allow({
 
 Meteor.publish("student",function(){
   return student.find();
+});
+
+Meteor.publish("subject",function(){
+  return subject.find();
 });
