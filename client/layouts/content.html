@@ -26,6 +26,7 @@
   </select>
   <br>
 </div>
+{{> readCSV}}
 {{> studentlist}}
 {{> example}}
 <button type="button">Save</button>
@@ -73,4 +74,10 @@
     {{#each subject}}
     <option>{{subjectCode}}</option>
     {{/each}}
+</template>
+
+
+<template name="readCSV">
+    <input type="file" id="csv-file" name="files"/>
+    <button type="submit" class="btn btn-primary btnReadCsv">Read</button>
 </template>

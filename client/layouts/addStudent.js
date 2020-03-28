@@ -15,8 +15,18 @@ Template.addStudent.events({
       programme: $(e.target).find('[name=programme]').val()
     };
 
-    post._id = student.insert(post);
-    alert("Student profile has been created");
-    FlowRouter.go("/");
+    for( let x=0; x<student.find().count(); x++){
+      exists = student.findOne({studentID: post.studentID});
+    }
+    if(!exists){
+      post._id = student.insert(post);
+      //alert("Student profile has been created");
+      swal("Good job!", "Student profile has been created", "success");
+      FlowRouter.go("/");
+    }else{
+      //alert("Duplicated entry");
+        swal("Oops!", "Duplicated entry", "error");
+      FlowRouter.go("/");
+    }
   }
 });

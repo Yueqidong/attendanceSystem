@@ -31,3 +31,5 @@ aldeed:collection2@3.0.0
 aldeed:autoform
 aldeed:schema-index
 underscore
+session
+tunguska:reactive-aggregate

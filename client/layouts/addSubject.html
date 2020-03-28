@@ -6,23 +6,18 @@
   <br>
   {{> newSubject}}
   <br>
-  {{> readCSV}}
   {{/if}}
 </template>
 
 <template name="newSubject">
-  <div class="new-subject-container">
-    {{# autoForm collection=subject id="addSubjectForm" type="insert" validation="submitThenKeyup"}}
-    <fieldset>
-     {{> afQuickField name='subjectCode'}}
-     {{> afQuickField name='subjectName'}}
-   </fieldset>
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-    {{/autoForm}}
-  </div>
-</template>
 
-<template name="readCSV">
-    <input type="file" id="csv-file" name="files"/>
-    <button type="submit" class="btn btn-primary btnReadCsv">Read</button>
+  <div class="new-subject-container">
+      {{# autoForm collection=subject id="addSubjectForm" type="insert" validation="submitThenKeyup"}}
+      <fieldset>
+      {{> afQuickField name='subjectCode'}}
+      {{> afQuickField name='subjectName'}}
+      </fieldset>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+      {{/autoForm}}
+  </div>
 </template>

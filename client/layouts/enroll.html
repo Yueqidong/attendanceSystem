@@ -1,0 +1,37 @@
+<template name="enroll">
+  {{#if currentUser}}
+  <div style="text-align:center;">
+    <h2>Subject Enrollment</h2>
+  </div>
+  <br>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+
+      <label for="studentName" class="col-lg-2 control-label">Student ID:</label>
+      <div class="col-lg-4">
+        <select class="form-control" name="studentID" id="studentID">
+          {{> studentID}}
+        </select>
+      </div>
+
+      <label for="studentID" class="col-lg-2 control-label">Subject Code:</label>
+      <div class="col-lg-4">
+        <select class="form-control" name="subjectCode" id="subjectCode">
+          {{> subject}}
+        </select>
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <input type="submit" value="Enroll" class="btn btn-primary btn-lg btn-block"/>
+  </form>
+  {{/if}}
+</template>
+
+<template name="studentID">
+    {{#each student}}
+    <option>{{studentID}}</option>
+    {{/each}}
+</template>

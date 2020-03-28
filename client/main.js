@@ -9,5 +9,7 @@ Accounts.ui.config({
   passwordSignupFields: 'USERNAME_ONLY'
 });
 
+
+
 Meteor.subscribe("student");
 Meteor.subscribe("subject");
