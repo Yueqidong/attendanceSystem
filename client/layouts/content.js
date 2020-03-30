@@ -24,7 +24,9 @@ Template.readCSV.events({
 
 Template.student.helpers({
   student: function() {
-    return student.find();
+    var listOfStudent = Session.get('studentEnrolled');
+    console.log(listOfStudent);
+    return student.find({studentID:{$in:listOfStudent}}).fetch();
   }
 });
 
@@ -32,6 +34,15 @@ Template.student.helpers({
 Template.subject.helpers({
   subject: function() {
     return subject.find();
+  }
+});
+
+Template.subject.events({
+  'change #dropdown': function(event,template){
+    var selectedValue = $(event.target).val();
+    console.log(selectedValue);
+    var doc = subject.findOne({subjectCode:selectedValue}, {fields:{_id:0, enrollment:1}});
+    Session.set('studentEnrolled',doc.enrollment);
   }
 });
 

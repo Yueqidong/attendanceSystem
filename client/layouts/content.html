@@ -1,11 +1,11 @@
 <template name="content">
   {{#if currentUser}}
-<form role="form">
+<form role="form" id="aForm">
 <div class="form-group">
   <label for="name">Select a subject:</label>
-  <select class="form-control">
+
     {{> subject}}
-  </select>
+
   <br>
   <label for="name">Select a Week:</label>
   <select class="form-control">
@@ -71,9 +71,12 @@
 </template>
 
 <template name="subject">
+    <select id="dropdown" class="form-control">
+    <option>Please select a subject</option>
     {{#each subject}}
     <option>{{subjectCode}}</option>
     {{/each}}
+    </select>
 </template>
 
 
