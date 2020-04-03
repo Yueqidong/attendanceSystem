@@ -1,5 +1,6 @@
 import { student } from '../lib/collections/collection.js';
 import { subject } from '../lib/collections/collection.js';
+import { record } from '../lib/collections/collection.js';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { ReactiveAggregate } from 'meteor/tunguska:reactive-aggregate';
@@ -22,7 +23,20 @@ Meteor.methods({
 
     var doc=subject.findOne({subjectCode:subjectCode});
     subject.update({_id:doc._id},{$addToSet:{"enrollment":name}});
+  },
+  recordAttendance(subjectCode,week,studentName,studentID,remark){
+    var attendance = true;
+    doc = record.findOne({studentID: studentID});
+    record.update({_id:doc._id},{$set:{"attendance":attendance, "remark":remark}});
+  },
+  updateWeek(week, listOfID){
+    for(let i = 0; i<listOfID.length; i++){
+      let studentID = listOfID[ i ],
+          recordDoc = record.findOne({studentID: studentID});
+      record.update({_id:recordDoc._id},{$set:{"week":week}});
+    }
   }
+
 
 });
 
@@ -37,9 +51,18 @@ subject.allow({
   insert: function (userId, doc) {
     return !! userId;
 },
-  update: function(userID, doc)  {
+  update: function(userId, doc)  {
     return !! userId;
   }
+});
+
+record.allow({
+  insert: function (userId, doc) {
+  return !! userId;
+},
+  update: function (userId, doc)  {
+  return !! userId;
+}
 });
 
 Meteor.publish("student",function(){

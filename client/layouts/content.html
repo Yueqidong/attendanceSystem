@@ -3,12 +3,11 @@
 <form role="form" id="aForm">
 <div class="form-group">
   <label for="name">Select a subject:</label>
-
     {{> subject}}
-
   <br>
   <label for="name">Select a Week:</label>
-  <select class="form-control">
+  <select id="week" name="week" class="form-control">
+    <option>Select a week</option>
     <option>1</option>
     <option>2</option>
     <option>3</option>
@@ -28,8 +27,7 @@
 </div>
 {{> readCSV}}
 {{> studentlist}}
-{{> example}}
-<button type="button">Save</button>
+<input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
 <div id="render-target"></div>
 </form>
 {{/if}}
@@ -42,36 +40,31 @@
   <thead>
     <tr>
       <th>Student Name</th>
-      <th>Attendance</th>
+      <th>Student ID</th>
       <th>Remarks</th>
+      <th>Attendance</th>
     </tr>
   </thead>
   <tbody>
     {{> student}}
-
   </tbody>
 </table>
-
   </div>
-</template>
-
-<template name="example">
-    <button type="button" class="takePhoto">Capture Image</button>
-    <img class="photo">
 </template>
 
 <template name="student">
     {{#each student}}
     <tr>
-      <td>{{name}}</td>
-      <td><input type="checkbox" value=""></td>
-      <td><textarea rows="1"></textarea></td>
+      <td><input type="hidden" name="studentName" value="{{name}}">{{name}}</td>
+      <td><input type="hidden" name="studentID" value="{{studentID}}">{{studentID}}</td>
+      <td><textarea rows="1" id="remarks" name="remarks" data-id="{{studentID}}"></textarea></td>
+      <td><input type="submit" class="btn btn-primary markAttendance"></td>
     </tr>
     {{/each}}
 </template>
 
 <template name="subject">
-    <select id="dropdown" class="form-control">
+    <select id="dropdown" name="dropdown" class="form-control">
     <option>Please select a subject</option>
     {{#each subject}}
     <option>{{subjectCode}}</option>
