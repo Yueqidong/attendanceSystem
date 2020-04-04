@@ -10,6 +10,12 @@ Template.studentID.helpers({
   }
 });
 
+Template.selectSubject.helpers({
+  subject: function() {
+    return subject.find();
+  }
+});
+
 Template.enroll.events({
   'submit form':function(e){
     e.preventDefault();

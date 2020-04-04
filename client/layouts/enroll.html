@@ -18,7 +18,7 @@
       <label for="studentID" class="col-lg-2 control-label">Subject Code:</label>
       <div class="col-lg-4">
         <select class="form-control" name="subjectCode" id="subjectCode">
-          {{> subject}}
+          {{> selectSubject}}
         </select>
       </div>
 
@@ -33,5 +33,11 @@
 <template name="studentID">
     {{#each student}}
     <option>{{studentID}}</option>
+    {{/each}}
+</template>
+
+<template name="selectSubject">
+    {{#each subject}}
+    <option>{{subjectCode}}</option>
     {{/each}}
 </template>
