@@ -24,7 +24,6 @@ accounts-password@1.5.2
 twbs:bootstrap
 ian:accounts-ui-bootstrap-3
 less
-anychart:anychart
 mdg:camera
 jquery
 aldeed:collection2@3.0.0
@@ -32,4 +31,6 @@ aldeed:autoform
 aldeed:schema-index
 underscore
 session
-tunguska:reactive-aggregate
+email
+highcharts:highcharts-meteor
+highcharts-container

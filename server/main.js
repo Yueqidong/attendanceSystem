@@ -1,10 +1,14 @@
 import { student } from '../lib/collections/collection.js';
 import { subject } from '../lib/collections/collection.js';
 import { record } from '../lib/collections/collection.js';
+import './lib/config.js';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { ReactiveAggregate } from 'meteor/tunguska:reactive-aggregate';
+import { Email } from 'meteor/email';
+import {PythonShell} from 'python-shell';
 
+Fiber = Npm.require('fibers');
+exec = Npm.require('child_process').exec;
 
 Meteor.methods({
   parseUpload( data ) {
@@ -35,10 +39,52 @@ Meteor.methods({
           recordDoc = record.findOne({studentID: studentID});
       record.update({_id:recordDoc._id},{$set:{"week":week}});
     }
+  },
+  sendEmail(email, from, subject, text){
+    //check([email, from, subject, text], [String]);
+    Meteor.defer(()=>{
+      Email.send({to:email,
+        from:from,
+        subject:subject,
+        text:text
+      });
+    });
+  },
+  exportAllContacts() {
+		var fields = [
+			"subjectCode",
+			"studentName",
+			"studentID",
+			"week",
+			"attendance",
+      "remark"
+		];
+
+		var data = [];
+
+		var records = record.find().fetch();
+		_.each(records, function(c) {
+			data.push([
+				c.subjectCode,
+				c.studentName,
+				c.studentID,
+				c.week,
+				c.attendance,
+        c.remark
+			]);
+		});
+
+		return {fields: fields, data: data};
+	},
+  myPythonCall() {
+    PythonShell.run('C:/Users/Yue Qi Dong/face/face_recognition.py', null, function (err) {
+      if (err) throw err;
+      console.log('finished');
+    });
   }
 
-
 });
+
 
 
 student.allow({
@@ -65,10 +111,15 @@ record.allow({
 }
 });
 
+
 Meteor.publish("student",function(){
   return student.find();
 });
 
 Meteor.publish("subject",function(){
   return subject.find();
+});
+
+Meteor.publish("record",function(){
+  return record.find();
 });

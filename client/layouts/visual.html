@@ -1,9 +1,9 @@
 <template name="visual">
 {{#if currentUser}}
 <style type="text/css">
- #container {
+ #container1 {
     width: 100%;
-    height: 150%;
+    height: 200%;
     margin: 0;
     padding: 0;
 }
@@ -11,115 +11,27 @@
   <form role="form">
   <div class="form-group">
     <label for="name">Select a subject:</label>
-    <select class="form-control">
-      <option>BIT101</option>
-      <option>BIT201</option>
-      <option>BIS201</option>
-      <option>BIS205</option>
-      <option>BIT301</option>
+    <select class="form-control" id="subjectCode" name="subjectCode">
+      {{> getSubject}}
     </select>
     <br>
-    <br>
-    <label for="name">Select a student:</label>
-    <select class="form-control">
-      <option>Ali Metcalfe</option>
-      <option>Bernard Hendricks</option>
-      <option>Kelsey Mccray</option>
-      <option>Findlay Barry</option>
-    </select>
-    <br>
-    <button type="button" class="btn btn-primary btn-lg btn-block">Generate a Visualization</button>
     <br>
     <div id="container"></div>
   </div>
   </form>
-  <script>
-  anychart.onDocumentReady(function () {
-      // create data set on our data
-      var dataSet = anychart.data.set(getData());
-
-      // map data for the first series, take x from the zero column and value from the first column of data set
-      var seriesData_1 = dataSet.mapAs({'x': 0, 'value': 1});
-
-
-      // create line chart
-      var chart = anychart.column();
-
-      // turn on chart animation
-      chart.animation(true);
-
-      // set chart padding
-      chart.padding([10, 20, 5, 20]);
-
-      // turn on the crosshair
-      chart.crosshair()
-              .enabled(true)
-              .yLabel(false)
-              .yStroke(null);
-
-      // set tooltip mode to point
-      chart.tooltip().positionMode('point');
-
-      // set chart title text settings
-      chart.title('Student attendance (0:Absence 1:Presence)');
-
-      // set yAxis title
-      chart.yAxis().title('Whether student attended or not');
-      chart.xAxis().title('Weeks');
-      chart.xAxis().labels().padding(-5);
-
-      // create first series with mapped data
-      var series_1 = chart.column(seriesData_1);
-      series_1.name('Student1');
-      series_1.hovered().markers()
-              .enabled(true)
-              .type('circle')
-              .size(10);
-      series_1.tooltip()
-              .position('right')
-              .anchor('left-center')
-              .offsetX(5)
-              .offsetY(5);
-
-      chart.barGroupsPadding(0);
-
-
-
-      // turn the legend on
-      chart.legend()
-              .enabled(true)
-              .fontSize(13)
-              .padding([0, 0, 10, 0]);
-
-      // set container id for the chart
-      chart.container('container');
-      // initiate chart drawing
-      chart.draw();
-  });
-
-  function getData() {
-      return [
-          ['1', 1,],
-          ['2', 1,],
-          ['3', 1,],
-          ['4', 1,],
-          ['5', 1,],
-          ['6', 1,],
-          ['7', 0,],
-          ['8', 1,],
-          ['9', 0,],
-          ['10', 1,],
-          ['11', 1,],
-          ['12', 1,],
-          ['13', 1,],
-          ['14', 1,],
-
-      ]
-  }
-  </script>
+  {{> charts}}
 {{/if}}
 </template>
 
-<template name="acTemplate">
-    <div id="container1"></div>
+<template name="getSubject">
+    <option>Select a subject</option>
+    {{#each subject}}
+    <option>{{subjectCode}}</option>
+    {{/each}}
+</template>
+
+
+<template name="charts">
+  <div id="chart" style="width:800px; height:500px;">{{createChart}}
+  </div>
 </template>

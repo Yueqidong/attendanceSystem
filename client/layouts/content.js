@@ -44,6 +44,9 @@ Template.readCSV.events({
      var week = $(event.target).val();
      var listOfID = Session.get('studentEnrolled');
      Meteor.call('updateWeek', week, listOfID);
+   },
+   'click .activate':function(){
+     Meteor.call('myPythonCall');
    }
  });
 

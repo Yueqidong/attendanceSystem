@@ -1,0 +1,36 @@
+<template name="reporting">
+  {{#if currentUser}}
+  <div style="text-align:center;">
+    <h2></h2>
+    <h3>Reporting:The students whose attendance is below 80% are shown.</h3>
+  </div>
+  <br>
+
+  <form class="form-horizontal" role="form" id="form">
+    <div class="form-group">
+
+      <label for="studentName" class="col-lg-2 control-label">Student ID:</label>
+      <div class="col-lg-4">
+        <select class="form-control" name="studentID" id="studentID">
+        {{> belowEighty}}
+        </select>
+      </div>
+
+      <label for="email" class="col-lg-2 control-label">Email:</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" id="email" name="email" required>
+      </div>
+    </div>
+    <br>
+    <br>
+    <input type="submit" value="Report" class="btn btn-primary btn-lg btn-block"/>
+  </form>
+  {{/if}}
+</template>
+
+<template name="belowEighty">
+  <option>Select a student ID</option>
+  {{#each belowEighty}}
+  <option>{{studentID}}</option>
+  {{/each}}
+</template>

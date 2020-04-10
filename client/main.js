@@ -13,3 +13,4 @@ Accounts.ui.config({
 
 Meteor.subscribe("student");
 Meteor.subscribe("subject");
+Meteor.subscribe("record");
